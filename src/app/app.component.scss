@@ -1,0 +1,50 @@
+.trigger {
+  font-size: 18px;
+  line-height: 64px;
+  padding: 0 24px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.trigger:hover {
+  color: #1890ff;
+}
+
+.logo {
+  height: 32px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px;
+  font-size: 18px;
+  color: #fff;
+  text-align: center;
+  line-height: 32px;
+  overflow: hidden;
+}
+
+nz-header {
+  background: #fff;
+  padding: 0;
+}
+
+nz-content {
+  margin: 16px;
+}
+
+.inner-content {
+  padding: 24px;
+  background: #fff;
+  min-height: 360px;
+}
+
+nz-sider {
+  position: fixed;
+  top: 0px;
+  bottom: 0;
+  box-shadow: 5px 0 4px -4px #ddd;
+}
+.side-menu-item {
+  outline: none;
+}
+.side-menu-item.active {
+  background: #1890ff;
+}

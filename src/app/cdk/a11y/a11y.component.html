@@ -1,0 +1,27 @@
+<section>
+  <h2>上下左右按钮切换</h2>
+  <ul>
+    <li 
+      *ngFor="let item of tabList; let i = index;" 
+      [class.active]="activeKey === i" 
+      [class.disabled]="item.disabled"
+      role="tab" 
+      [tabindex]="i" 
+      appTab
+      [cDisabled]="item.disabled"
+      (click)="setActiveItemKey(i)"
+     >{{item.title}}</li>
+  </ul>
+</section>
+
+<section>
+  <h2>FocusTrap</h2>
+  <input value="cdkTrapFocus外的Input">
+  <div cdkTrapFocus>
+    <input value="1" cdkFocusInitial>
+    <input value="2" cdkFocusRegionStart>
+    <input value="3">
+    <input value="4" cdkFocusRegionEnd>
+  </div>
+</section>
+
