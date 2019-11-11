@@ -10,18 +10,28 @@
       appTab
       [cDisabled]="item.disabled"
       (click)="setActiveItemKey(i)"
-     >{{item.title}}</li>
+    >{{item.title}}</li>
   </ul>
 </section>
 
 <section>
+  <h2> focus monitor</h2>
+  <app-cdk-focus-monitor></app-cdk-focus-monitor>
+</section>
+
+<section>
   <h2>FocusTrap</h2>
-  <input value="cdkTrapFocus外的Input">
-  <div cdkTrapFocus>
-    <input value="1" cdkFocusInitial>
-    <input value="2" cdkFocusRegionStart>
-    <input value="3">
-    <input value="4" cdkFocusRegionEnd>
-  </div>
+  
+  <app-cdk-trap-focus></app-cdk-trap-focus>
+</section>
+
+<section>
+  <h2>interactivity checker</h2>
+  <app-cdk-interactivity-checker></app-cdk-interactivity-checker>
+</section>
+
+<section>
+  <h2>live announcer</h2>
+  <app-cdk-live-announcer></app-cdk-live-announcer>
 </section>
 
