@@ -67,11 +67,18 @@ export class UserListComponent implements OnInit, AfterViewInit {
     this.keyManager = new ActiveDescendantKeyManager(this.items)
       .withWrap()
       .withTypeAhead();
+
+    this.keyManager.tabOut.subscribe(res => {
+      console.log('this is tab out.', res);
+    });
+
+    this.keyManager.change.subscribe(res => {
+      console.log('this is key manager change.', res);
+    });
   }
 
   onKeyDown(event) {
     if (event.keyCode === ENTER) {
-      console.log(this.keyManager.activeItem);
       this.model = this.keyManager.activeItem.item.name;
     } else if (
       event.keyCode !== UP_ARROW &&
@@ -91,10 +98,10 @@ export class UserListComponent implements OnInit, AfterViewInit {
 
   @HostListener('keydown', ['$event'])
   public keydown(event: KeyboardEvent) {
-    if (event.keyCode === UP_ARROW || event.keyCode === RIGHT_ARROW) {
+    if (event.keyCode === UP_ARROW || event.keyCode === LEFT_ARROW) {
       event.preventDefault();
       this.keyManager.setPreviousItemActive();
-    } else if (event.keyCode === DOWN_ARROW || event.keyCode === LEFT_ARROW || event.keyCode === TAB) {
+    } else if (event.keyCode === DOWN_ARROW || event.keyCode === RIGHT_ARROW || event.keyCode === TAB) {
       event.preventDefault();
       this.keyManager.setNextItemActive();
     }

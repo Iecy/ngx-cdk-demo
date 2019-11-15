@@ -10,6 +10,9 @@ import { Highlightable } from '@angular/cdk/a11y';
     </div>
   `,
   styles: [`
+  :host {
+    outline: none;
+  }
   .active {
     background-color: lightblue;
     color: #fff;
