@@ -4,7 +4,7 @@ import { LiveAnnouncer } from '@angular/cdk/a11y';
 @Component({
   selector: 'app-cdk-live-announcer',
   templateUrl: './cdk-live-announcer.component.html',
-  styleUrls: ['./cdk-live-announcer.component.scss']
+  styleUrls: ['./cdk-live-announcer.component.scss'],
 })
 export class CdkLiveAnnouncerComponent implements OnInit {
   index = 0;

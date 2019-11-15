@@ -1,0 +1,18 @@
+<!-- 输入框 -->
+<div class="form-group">
+  <input class="form-control" placeholder="Search..." (keyup)="onKeyDown($event)" #input>
+</div>
+<section class="list-group" cdkTrapFocus>
+  <!-- ActiveDescendantKeyManager要管理的item -->
+  <app-user-item 
+  *ngFor="let user of users | filter: 'name' : input.value; index as index" 
+  [item]="user"
+  [disabled]="user.disabled"
+  class="list-group-item"
+  (selectItem)="selectItem(index)"
+  >
+    {{user.name}}
+  </app-user-item>
+</section>
+
+<p>{{model}}</p>

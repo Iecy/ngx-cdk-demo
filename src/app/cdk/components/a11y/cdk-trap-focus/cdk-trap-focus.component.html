@@ -1,11 +1,14 @@
-<!-- <div cdkTrapFocus >
-  <input value="FocusTrapFactory item 1">
-  <input style="margin-left: 10px" value="FocusTrapFactory item 2">
-  <input style="margin-left: 10px" value="FocusTrapFactory item 3">
-  <input style="margin-left: 10px" value="FocusTrapFactory item 4">
-</div> -->
 
-<div>
+<h2>通过指令实现</h2>
+<div cdkTrapFocus >
+  <input value="FocusTrapFactory item 1" cdkFocusInitial>
+  <input style="margin-left: 10px" value="FocusTrapFactory item 2" cdkFocusRegionStart>
+  <input style="margin-left: 10px" value="FocusTrapFactory item 3">
+  <input style="margin-left: 10px" value="FocusTrapFactory item 4" cdkFocusRegionEnd>
+</div>
+
+<h2> 通过factory方法实现</h2>
+<div #trapFactory>
   <input value="FocusTrapFactory item 1">
   <input value="FocusTrapFactory item 2">
   <input value="FocusTrapFactory item 3">

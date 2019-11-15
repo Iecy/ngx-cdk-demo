@@ -11,22 +11,3 @@ section {
     font-size: 18px;
   }
 }
-ul {
-  margin: 0;
-  padding: 0;
-  li {
-    display: inline-block;
-    line-height: 50px;
-    padding: 0 10px;
-    outline: none;
-    cursor: pointer;
-    &.active {
-      color: #fff;
-      background: #006BFF;
-    }
-    &.disabled {
-      opacity: .5;
-      cursor: not-allowed;
-    }
-  }
-}

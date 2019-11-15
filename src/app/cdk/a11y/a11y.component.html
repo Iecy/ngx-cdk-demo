@@ -1,17 +1,11 @@
 <section>
-  <h2>上下左右按钮切换</h2>
-  <ul>
-    <li 
-      *ngFor="let item of tabList; let i = index;" 
-      [class.active]="activeKey === i" 
-      [class.disabled]="item.disabled"
-      role="tab" 
-      [tabindex]="i" 
-      appTab
-      [cDisabled]="item.disabled"
-      (click)="setActiveItemKey(i)"
-    >{{item.title}}</li>
-  </ul>
+  <h2>FocusKeyManager</h2>
+  <app-tabs></app-tabs>
+</section>
+
+<section>
+  <h2>ActiveDescendantKeyManager</h2>
+  <app-user-list></app-user-list>
 </section>
 
 <section>
@@ -21,7 +15,6 @@
 
 <section>
   <h2>FocusTrap</h2>
-  
   <app-cdk-trap-focus></app-cdk-trap-focus>
 </section>
 

@@ -1,10 +1,29 @@
-<div class="example-focus-monitor">
-  <button #element>Focus Monitored Element {{elementOrigin}}</button>
+<div #monitor_one>
+  <div class="example-focus-monitor">
+    <button #element>Focus Monitored Element {{elementOrigin}}</button>
+  </div>
+  <div class="example-focus-monitor">
+    <div #subtree>
+      <p>Focus Monitored Subtree ({{subtreeOrigin}})</p>
+      <button>Child Button 1</button>
+      <button>Child Button 2</button>
+    </div>
+  </div>
 </div>
-<div class="example-focus-monitor">
-  <div #subtree>
-    <p>Focus Monitored Subtree ({{subtreeOrigin}})</p>
-    <button>Child Button 1</button>
-    <button>Child Button 2</button>
+
+<div #monitor_tow>
+  <div class="example-focus-monitor">
+    <button #monitored>1. Focus Monitored Element ({{monitoredOrigin}})</button>
+    <button #unmonitored>2. Not Monitored</button>
+  </div>
+  <div class="example-focus-monitor">
+    <nz-select [(ngModel)]="simulatedFocus" nzPlaceHolder="Simulated focus origin">
+      <nz-option nzValue="mouse" nzLabel="Mouse"></nz-option>
+      <nz-option nzValue="keyboard" nzLabel="Keyboard"></nz-option>
+      <nz-option nzValue="touch" nzLabel="Touch"></nz-option>
+      <nz-option nzValue="program" nzLabel="Programmatic"></nz-option>
+    </nz-select>
+    <button nz-button nzType="primary" (click)="focusMonitor.focusVia(monitored, simulatedFocus)">Focus button #1</button>
+    <button nz-button nzType="danger" (click)="focusMonitor.focusVia(unmonitored, simulatedFocus)">Focus button #2</button>
   </div>
 </div>
