@@ -14,6 +14,7 @@ export class TabsComponent implements OnInit, AfterViewInit {
   public keyManager: FocusKeyManager<TabDirective>;
 
   public activeKey = 0;
+  /** 数据，缺少ID, 使用ListKeyManagerOption中的数据是需要ID的唯一标示。实例：user-list */
   public tabList = [
     { title: '无障碍性', value: '无障碍性' },
     { title: '文字方向', value: '文字方向' },
@@ -31,7 +32,7 @@ export class TabsComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.keyManager = new FocusKeyManager(this.tabDirectiveList).withWrap();
   }
-
+  /** 手动控制active key */
   setActiveItemKey(idx: number): void {
     this.activeKey = idx;
   }
