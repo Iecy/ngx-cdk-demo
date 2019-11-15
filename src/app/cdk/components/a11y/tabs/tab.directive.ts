@@ -1,4 +1,4 @@
-import {Directive, ElementRef, Input, HostBinding} from '@angular/core';
+import { Directive, ElementRef, Input, HostBinding } from '@angular/core';
 
 @Directive({
   selector: '[appTab]'
@@ -9,7 +9,6 @@ export class TabDirective {
     return this.disabled;
   }
 
-  // tslint:disable-next-line:variable-name
   constructor(private element: ElementRef) { }
 
   focus() {

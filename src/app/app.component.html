@@ -2,7 +2,15 @@
   <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null" >
     <div class="logo">CDK练习</div>
     <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
-      <li class="side-menu-item" nz-menu-item *ngFor="let item of menuList" [routerLink]="item.router" [routerLinkActive]="'active'">
+      <li 
+      class="side-menu-item" 
+      nz-menu-item *ngFor="let item of menuList" 
+      [routerLink]="item.router" 
+      [routerLinkActive]="'active'"
+      nz-tooltip
+      nzPlacement="right"
+      [nzTitle]="isCollapsed ? item.title : ''"
+      >
         <i nz-icon [nzType]="item.icon"></i>
         <span>{{item.title}}</span>
       </li>
