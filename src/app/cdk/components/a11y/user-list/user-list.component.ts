@@ -1,6 +1,21 @@
-import { Component, OnInit, AfterViewInit, ViewChildren, QueryList, HostListener, HostBinding } from '@angular/core';
 import { ActiveDescendantKeyManager } from '@angular/cdk/a11y';
-import { ENTER, UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, TAB } from '@angular/cdk/keycodes';
+import {
+  DOWN_ARROW,
+  ENTER,
+  LEFT_ARROW,
+  RIGHT_ARROW,
+  TAB,
+  UP_ARROW
+} from '@angular/cdk/keycodes';
+import {
+  AfterViewInit,
+  Component,
+  HostBinding,
+  HostListener,
+  OnInit,
+  QueryList,
+  ViewChildren
+} from '@angular/core';
 
 import { UserItemComponent } from './user-item.component';
 @Component({
@@ -58,10 +73,9 @@ export class UserListComponent implements OnInit, AfterViewInit {
       name: 'June Eaton'
     }
   ];
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   ngAfterViewInit(): void {
     this.keyManager = new ActiveDescendantKeyManager(this.items)
@@ -93,6 +107,9 @@ export class UserListComponent implements OnInit, AfterViewInit {
   }
 
   public selectItem(index: number): void {
+    if (this.users[index].disabled) {
+      return;
+    }
     this.keyManager.setActiveItem(index);
   }
 
@@ -101,7 +118,11 @@ export class UserListComponent implements OnInit, AfterViewInit {
     if (event.keyCode === UP_ARROW || event.keyCode === LEFT_ARROW) {
       event.preventDefault();
       this.keyManager.setPreviousItemActive();
-    } else if (event.keyCode === DOWN_ARROW || event.keyCode === RIGHT_ARROW || event.keyCode === TAB) {
+    } else if (
+      event.keyCode === DOWN_ARROW ||
+      event.keyCode === RIGHT_ARROW ||
+      event.keyCode === TAB
+    ) {
       event.preventDefault();
       this.keyManager.setNextItemActive();
     }

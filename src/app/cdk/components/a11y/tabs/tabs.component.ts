@@ -40,6 +40,9 @@ export class TabsComponent implements OnInit, AfterViewInit {
   }
   /** 手动控制active key */
   setActiveItemKey(idx: number): void {
+    if (this.tabList[idx].disabled) {
+      return;
+    }
     this.activeKey = idx;
   }
 
