@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Input, HostBinding } from '@angular/core';
+import { Directive, ElementRef, HostBinding, Input } from '@angular/core';
 
 @Directive({
   selector: '[appTab]'
@@ -9,10 +9,9 @@ export class TabDirective {
     return this.disabled;
   }
 
-  constructor(private element: ElementRef) { }
+  constructor(private element: ElementRef) {}
 
   focus() {
     this.element.nativeElement.focus();
   }
-
 }

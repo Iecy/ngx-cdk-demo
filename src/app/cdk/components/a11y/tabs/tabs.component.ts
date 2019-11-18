@@ -1,5 +1,12 @@
-import { Component, OnInit, ViewChildren, QueryList, AfterViewInit, HostListener } from '@angular/core';
 import { FocusKeyManager } from '@angular/cdk/a11y';
+import {
+  AfterViewInit,
+  Component,
+  HostListener,
+  OnInit,
+  QueryList,
+  ViewChildren
+} from '@angular/core';
 
 import { TabDirective } from './tab.directive';
 
@@ -9,7 +16,6 @@ import { TabDirective } from './tab.directive';
   styleUrls: ['./tabs.component.scss']
 })
 export class TabsComponent implements OnInit, AfterViewInit {
-
   @ViewChildren(TabDirective) tabDirectiveList: QueryList<TabDirective>;
   public keyManager: FocusKeyManager<TabDirective>;
 
@@ -21,16 +27,16 @@ export class TabsComponent implements OnInit, AfterViewInit {
     { title: '拖放', value: '拖放', disabled: true },
     { title: '布局', value: '布局' },
     { title: '观察者', value: '观察者' },
-    { title: '浮层', value: '浮层' },
+    { title: '浮层', value: '浮层' }
   ];
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   ngAfterViewInit(): void {
     this.keyManager = new FocusKeyManager(this.tabDirectiveList).withWrap();
+    this.keyManager.setActiveItem(0);
   }
   /** 手动控制active key */
   setActiveItemKey(idx: number): void {
