@@ -94,13 +94,7 @@ export class UserListComponent implements OnInit, AfterViewInit {
   onKeyDown(event) {
     if (event.keyCode === ENTER) {
       this.model = this.keyManager.activeItem.item.name;
-    } else if (
-      event.keyCode !== UP_ARROW &&
-      event.keyCode !== DOWN_ARROW &&
-      event.keyCode !== LEFT_ARROW &&
-      event.keyCode !== RIGHT_ARROW &&
-      event.keyCode !== TAB
-    ) {
+    } else {
       this.keyManager.setActiveItem(null);
       this.keyManager.onKeydown(event);
     }

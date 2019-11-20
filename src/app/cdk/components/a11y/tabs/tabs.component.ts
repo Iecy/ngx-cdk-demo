@@ -35,7 +35,10 @@ export class TabsComponent implements OnInit, AfterViewInit {
   ngOnInit() {}
 
   ngAfterViewInit(): void {
-    this.keyManager = new FocusKeyManager(this.tabDirectiveList).withWrap();
+    this.keyManager = new FocusKeyManager(this.tabDirectiveList)
+      .withVerticalOrientation(false)
+      .withHorizontalOrientation('rtl')
+      .withWrap();
     this.keyManager.setActiveItem(0);
   }
   /** 手动控制active key */
@@ -70,13 +73,8 @@ export class TabsComponent implements OnInit, AfterViewInit {
 
   @HostListener('keydown', ['$event'])
   public keydown(e: KeyboardEvent) {
-    if (e.code === 'ArrowDown' || e.code === 'ArrowRight') {
-      e.preventDefault();
-      this.keyManager.setNextItemActive();
-    } else if (e.code === 'ArrowUp' || e.code === 'ArrowLeft') {
-      e.preventDefault();
-      this.keyManager.setPreviousItemActive();
-    }
+    e.preventDefault();
+    this.keyManager.onKeydown(e);
     this.setActiveItemKey(this.keyManager.activeItemIndex);
   }
 }

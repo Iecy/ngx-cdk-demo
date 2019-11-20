@@ -1,11 +1,13 @@
 <ul>
-  <li 
-    *ngFor="let item of tabList; let i = index;" 
-    [class.active]="activeKey === i" 
-    role="tab" 
-    [tabindex]="i" 
+  <li
+    *ngFor="let item of tabList; let i = index"
+    [class.active]="activeKey === i"
+    role="tab"
+    [tabindex]="i"
     appTab
     [disabled]="item.disabled"
     (click)="setActiveItemKey(i)"
-  >{{item.title}}</li>
+  >
+    {{ item.title }}
+  </li>
 </ul>
