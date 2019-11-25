@@ -40,6 +40,14 @@ export class TabsComponent implements OnInit, AfterViewInit {
       .withHorizontalOrientation('rtl')
       .withWrap();
     this.keyManager.setActiveItem(0);
+
+    this.keyManager.tabOut.subscribe(res => {
+      console.log(res, 'this is tab out.');
+    });
+
+    this.keyManager.change.subscribe(index => {
+      console.log(index, 'this is active index change.');
+    });
   }
   /** 手动控制active key */
   setActiveItemKey(idx: number): void {
