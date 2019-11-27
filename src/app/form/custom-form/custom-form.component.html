@@ -27,7 +27,7 @@
         [nzXs]="24"
         nzErrorTip="{{ customForm.get('age').errors | json }}"
       >
-        <app-counts formControlName="age" id="age" [count]="10"></app-counts>
+        <app-counts formControlName="age" id="age"></app-counts>
       </nz-form-control>
     </nz-form-item>
 
@@ -43,7 +43,6 @@
         <app-counts-complex
           formControlName="height"
           id="age"
-          [count]="10"
           [max]="11"
         ></app-counts-complex>
       </nz-form-control>

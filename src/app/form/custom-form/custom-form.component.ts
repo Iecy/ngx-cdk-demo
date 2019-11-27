@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { validateCounterRange } from '../components/counts/utils';
 
 @Component({
   selector: 'app-custom-form',
@@ -15,8 +16,8 @@ export class CustomFormComponent implements OnInit {
     this.customForm = this.fb.group({
       username: [null, Validators.required],
       password: [null, Validators.required],
-      age: null,
-      height: null
+      age: [11, validateCounterRange],
+      height: 10
     });
   }
 
