@@ -3,7 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   { path: '', redirectTo: 'cdk', pathMatch: 'full' },
-  { path: 'cdk', loadChildren: './cdk/cdk.module#CdkModule' }
+  { path: 'cdk', loadChildren: './cdk/cdk.module#CdkModule' },
+  { path: 'form', loadChildren: './form/form.module#FormModule' }
 ];
 
 @NgModule({

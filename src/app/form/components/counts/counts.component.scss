@@ -1,0 +1,13 @@
+span {
+  display: inline-block;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 5px;
+  &.icon {
+    cursor: pointer;
+    width: 30px;
+    border: 1px solid #ddd;
+    text-align: center;
+    user-select: none;
+  }
+}

@@ -12,6 +12,7 @@
 
 .logo {
   height: 32px;
+  min-height: 32px;
   background: rgba(255, 255, 255, 0.2);
   margin: 16px;
   font-size: 18px;
@@ -24,6 +25,23 @@
 nz-header {
   background: #fff;
   padding: 0;
+  display: flex;
+  ul {
+    flex: 1;
+    padding: 0;
+    li {
+      list-style: none;
+      display: inline-block;
+      padding: 0 8px;
+      a {
+        color: rgba(0, 0, 0, 0.65);
+        &.active,
+        &:hover {
+          color: #1890ff;
+        }
+      }
+    }
+  }
 }
 
 nz-content {
@@ -41,6 +59,10 @@ nz-sider {
   top: 0px;
   bottom: 0;
   box-shadow: 5px 0 4px -4px #ddd;
+  ul {
+    overflow: auto;
+    flex: 1;
+  }
 }
 .side-menu-item {
   outline: none;

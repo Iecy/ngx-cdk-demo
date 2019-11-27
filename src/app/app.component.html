@@ -1,18 +1,24 @@
 <nz-layout class="root-main">
-  <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null" >
+  <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
     <div class="logo">CDK练习</div>
-    <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
-      <li 
-      class="side-menu-item" 
-      nz-menu-item *ngFor="let item of menuList" 
-      [routerLink]="item.router" 
-      [routerLinkActive]="'active'"
-      nz-tooltip
-      nzPlacement="right"
-      [nzTitle]="isCollapsed ? item.title : ''"
+    <ul
+      nz-menu
+      nzTheme="dark"
+      nzMode="inline"
+      [nzInlineCollapsed]="isCollapsed"
+    >
+      <li
+        class="side-menu-item"
+        nz-menu-item
+        *ngFor="let item of appService.childMenus"
+        [routerLink]="item.router"
+        [routerLinkActive]="'active'"
+        nz-tooltip
+        nzPlacement="right"
+        [nzTitle]="isCollapsed ? item.title : ''"
       >
         <i nz-icon [nzType]="item.icon"></i>
-        <span>{{item.title}}</span>
+        <span>{{ item.title }}</span>
       </li>
     </ul>
   </nz-sider>
@@ -24,6 +30,18 @@
         [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
         (click)="isCollapsed = !isCollapsed"
       ></i>
+      <ul>
+        <li *ngFor="let item of appService.routerList">
+          <a
+            [routerLink]="item.router"
+            routerLinkActive
+            #routerRef="routerLinkActive"
+            [class.active]="appService.isLinkActive(routerRef, item)"
+          >
+            {{ item.title }}
+          </a>
+        </li>
+      </ul>
     </nz-header>
     <nz-content>
       <router-outlet></router-outlet>

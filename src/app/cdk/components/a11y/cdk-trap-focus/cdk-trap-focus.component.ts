@@ -1,5 +1,13 @@
-import { Component, OnInit, ElementRef, AfterViewInit, OnDestroy, ViewChild, TemplateRef } from '@angular/core';
 import { FocusMonitor, FocusTrapFactory } from '@angular/cdk/a11y';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnDestroy,
+  OnInit,
+  TemplateRef,
+  ViewChild
+} from '@angular/core';
 
 @Component({
   selector: 'app-cdk-trap-focus',
@@ -7,16 +15,16 @@ import { FocusMonitor, FocusTrapFactory } from '@angular/cdk/a11y';
   styleUrls: ['./cdk-trap-focus.component.scss']
 })
 export class CdkTrapFocusComponent implements OnInit, AfterViewInit, OnDestroy {
-
-  @ViewChild('trapFactory', {static: true}) trapFactory: ElementRef<HTMLElement>;
+  @ViewChild('trapFactory', { static: true }) trapFactory: ElementRef<
+    HTMLElement
+  >;
   constructor(
     private elementRef: ElementRef,
     private focusMonitor: FocusMonitor,
-    private focusFactory: FocusTrapFactory,
-  ) { }
+    private focusFactory: FocusTrapFactory
+  ) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   ngAfterViewInit(): void {
     this.focusMonitor.monitor(this.trapFactory, true).subscribe(mode => {
@@ -28,5 +36,4 @@ export class CdkTrapFocusComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnDestroy(): void {
     this.focusMonitor.stopMonitoring(this.trapFactory);
   }
-
 }

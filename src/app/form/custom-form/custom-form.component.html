@@ -1,0 +1,58 @@
+<section>
+  <h2>自定义表单</h2>
+  <form nz-form [formGroup]="customForm" (ngSubmit)="submitForm()">
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="username">
+        用户名：
+      </nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请输入用户名">
+        <input nz-input formControlName="username" id="username" />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="password">
+        密码：
+      </nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请输入密码">
+        <input nz-input formControlName="password" id="password" />
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="age">
+        年龄：
+      </nz-form-label>
+      <nz-form-control
+        [nzSm]="14"
+        [nzXs]="24"
+        nzErrorTip="{{ customForm.get('age').errors | json }}"
+      >
+        <app-counts formControlName="age" id="age" [count]="10"></app-counts>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="height">
+        体重：
+      </nz-form-label>
+      <nz-form-control
+        [nzSm]="14"
+        [nzXs]="24"
+        nzErrorTip="{{ customForm.get('height').errors | json }}"
+      >
+        <app-counts-complex
+          formControlName="height"
+          id="age"
+          [count]="10"
+          [max]="11"
+        ></app-counts-complex>
+      </nz-form-control>
+    </nz-form-item>
+
+    <div class="footer">
+      <button nz-button nzType="primary" [disabled]="!customForm.valid">
+        确认
+      </button>
+    </div>
+  </form>
+</section>

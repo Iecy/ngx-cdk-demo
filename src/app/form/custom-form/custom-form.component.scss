@@ -1,0 +1,13 @@
+section {
+  background: #fff;
+  padding: 16px;
+  margin-bottom: 16px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+  h2 {
+    height: 40px;
+    line-height: 40px;
+    font-size: 18px;
+  }
+}

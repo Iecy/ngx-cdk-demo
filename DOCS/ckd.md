@@ -1,14 +1,17 @@
 # 一、 ListKeyManager
+
 ## 1.1 ListKeyManager 常用的方法
+
 ### 1.1.1 ListKeyManagerOption
+
 ```typescript
 export interface ListKeyManagerOption {
   /** 当前item是否可用 */
   disable?: boolean;
-  /** 
+  /**
    * 获取当前item对应的label,配合ListKeyManager里面withTypeAhead函数的使用
    * 适用于输入框的情况，比如输入框下面有一些list item。当输入框输入字符的时候list item 里面的active item 和输入的文字匹配
-  */
+   */
   getLabel?(): string;
 }
 ```
