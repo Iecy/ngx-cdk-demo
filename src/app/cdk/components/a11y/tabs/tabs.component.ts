@@ -37,7 +37,7 @@ export class TabsComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.keyManager = new FocusKeyManager(this.tabDirectiveList)
       .withVerticalOrientation(false)
-      .withHorizontalOrientation('rtl')
+      .withHorizontalOrientation('ltr')
       .withWrap();
     this.keyManager.setActiveItem(0);
 

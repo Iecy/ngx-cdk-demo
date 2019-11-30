@@ -92,12 +92,10 @@ export class UserListComponent implements OnInit, AfterViewInit {
   }
 
   onKeyDown(event) {
-    if (event.keyCode === ENTER) {
-      this.model = this.keyManager.activeItem.item.name;
-    } else {
+    if (!event.target.value) {
       this.keyManager.setActiveItem(null);
-      this.keyManager.onKeydown(event);
     }
+    this.keyManager.onKeydown(event);
   }
 
   public selectItem(index: number): void {
@@ -109,16 +107,8 @@ export class UserListComponent implements OnInit, AfterViewInit {
 
   @HostListener('keydown', ['$event'])
   public keydown(event: KeyboardEvent) {
-    if (event.keyCode === UP_ARROW || event.keyCode === LEFT_ARROW) {
-      event.preventDefault();
-      this.keyManager.setPreviousItemActive();
-    } else if (
-      event.keyCode === DOWN_ARROW ||
-      event.keyCode === RIGHT_ARROW ||
-      event.keyCode === TAB
-    ) {
-      event.preventDefault();
-      this.keyManager.setNextItemActive();
+    if (event.keyCode === ENTER) {
+      this.model = this.keyManager.activeItem.item.name;
     }
   }
 }
