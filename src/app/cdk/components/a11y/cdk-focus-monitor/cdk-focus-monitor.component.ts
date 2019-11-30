@@ -1,19 +1,35 @@
-import { Component, OnInit, ViewChild, ElementRef, ChangeDetectorRef, NgZone, OnDestroy, AfterViewInit } from '@angular/core';
 import { FocusMonitor, FocusOrigin, FocusTrapFactory } from '@angular/cdk/a11y';
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  NgZone,
+  OnDestroy,
+  OnInit,
+  ViewChild
+} from '@angular/core';
 
 @Component({
   selector: 'app-cdk-focus-monitor',
   templateUrl: './cdk-focus-monitor.component.html',
   styleUrls: ['./cdk-focus-monitor.component.scss']
 })
-export class CdkFocusMonitorComponent implements OnInit, AfterViewInit, OnDestroy {
-  @ViewChild('monitor_one', {static: true}) monitorOne: ElementRef<HTMLElement>;
+export class CdkFocusMonitorComponent
+  implements OnInit, AfterViewInit, OnDestroy {
+  @ViewChild('monitor_one', { static: true }) monitorOne: ElementRef<
+    HTMLElement
+  >;
   @ViewChild('element', { static: true }) element: ElementRef<HTMLElement>;
-  @ViewChild('subtree', {static: true}) subtree: ElementRef<HTMLElement>;
+  @ViewChild('subtree', { static: true }) subtree: ElementRef<HTMLElement>;
 
-  @ViewChild('monitor_tow', {static: true}) monitorTwo: ElementRef<HTMLElement>;
-  @ViewChild('monitored', {static: true}) monitored: ElementRef<HTMLElement>;
-  @ViewChild('unmonitored', {static: true}) unmonitored: ElementRef<HTMLElement>;
+  @ViewChild('monitor_tow', { static: true }) monitorTwo: ElementRef<
+    HTMLElement
+  >;
+  @ViewChild('monitored', { static: true }) monitored: ElementRef<HTMLElement>;
+  @ViewChild('unmonitored', { static: true }) unmonitored: ElementRef<
+    HTMLElement
+  >;
 
   public elementOrigin = this.formatOrigin(null);
   public subtreeOrigin = this.formatOrigin(null);
@@ -25,25 +41,28 @@ export class CdkFocusMonitorComponent implements OnInit, AfterViewInit, OnDestro
     private focusMonitor: FocusMonitor,
     private cdr: ChangeDetectorRef,
     private ngZone: NgZone,
-    private focusFactory: FocusTrapFactory,
-  ) { }
+    private focusFactory: FocusTrapFactory
+  ) {}
 
   ngOnInit() {
-    this.focusMonitor.monitor(this.element)
-      .subscribe(origin => this.ngZone.run(() => {
+    this.focusMonitor.monitor(this.element).subscribe(origin =>
+      this.ngZone.run(() => {
         this.elementOrigin = this.formatOrigin(origin);
         this.cdr.markForCheck();
-      }));
-    this.focusMonitor.monitor(this.subtree, true)
-      .subscribe(origin => this.ngZone.run(() => {
+      })
+    );
+    this.focusMonitor.monitor(this.subtree, true).subscribe(origin =>
+      this.ngZone.run(() => {
         this.subtreeOrigin = this.formatOrigin(origin);
         this.cdr.markForCheck();
-      }));
-    this.focusMonitor.monitor(this.monitored)
-      .subscribe(origin => this.ngZone.run(() => {
+      })
+    );
+    this.focusMonitor.monitor(this.monitored).subscribe(origin =>
+      this.ngZone.run(() => {
         this.monitoredOrigin = this.formatOrigin(origin);
         this.cdr.markForCheck();
-      }));
+      })
+    );
   }
 
   ngAfterViewInit(): void {
