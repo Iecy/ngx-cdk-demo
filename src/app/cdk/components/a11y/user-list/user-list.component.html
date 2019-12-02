@@ -1,6 +1,6 @@
 <!-- 输入框 -->
 <div class="form-group">
-  <input class="form-control" placeholder="请输入搜索" (keyup)="onKeyDown($event)" #input>
+  <input class="form-control" placeholder="请输入搜索" (keyup)="onKeyDown($event)" (focus)="isFocus=true" (blur)="isFocus = false" #input>
 </div>
 <section class="list-group">
   <!-- ActiveDescendantKeyManager要管理的item -->

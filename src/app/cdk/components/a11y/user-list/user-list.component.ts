@@ -25,6 +25,7 @@ import { UserItemComponent } from './user-item.component';
 })
 export class UserListComponent implements OnInit, AfterViewInit {
   public model = '';
+  public isFocus = false;
   /**
    * 找到所有的item(ListKeyManagerOption - Highlightable)
    */
@@ -82,6 +83,7 @@ export class UserListComponent implements OnInit, AfterViewInit {
       .withWrap()
       .withTypeAhead();
 
+    this.keyManager.setActiveItem(0);
     this.keyManager.tabOut.subscribe(res => {
       console.log('this is tab out.', res);
     });
@@ -109,6 +111,10 @@ export class UserListComponent implements OnInit, AfterViewInit {
   public keydown(event: KeyboardEvent) {
     if (event.keyCode === ENTER) {
       this.model = this.keyManager.activeItem.item.name;
+    } else {
+      if (!this.isFocus) {
+        this.keyManager.onKeydown(event);
+      }
     }
   }
 }
